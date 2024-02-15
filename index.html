@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="work-page">
+        <div class="viewport-2d-container work-page--container"></div>
+        <div class="screen-2d-panel">
+            <svg id="svg"></svg>
+        </div>
+        <div class="viewport-3d-container work-page--container">
+            <div class="screen-3d-panel">
+                <canvas id="three"></canvas>
+            </div>
+        </div>
+        <div class="menu-container work-page--container">
+            <div class="left-menu-panel">
+                <div class="top-logo-wrapper logo">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <rect x="20" y="20" width="160" height="160" fill="none" />
+                        <line x1="20" y1="100" x2="180" y2="100"></line>
+                        <line x1="20" y1="20" x2="100" y2="100"></line>
+                        <line x1="180" y1="20" x2="100" y2="100"></line>
+                    </svg>
+                </div>
+                <div id="file-button" class="left-menu-panel--button related-menu-button">File</div>
+                <div id="edit-button" class="left-menu-panel--button related-menu-button">Edit</div>
+                <div id="view-button" class="left-menu-panel--button related-menu-button">View</div>
+                <div id="play-button" class="left-menu-panel--button related-menu-button">Play</div>
+                <div id="help-button" class="left-menu-panel--button related-menu-button">Help</div>
+                <div class="hamburger-menu-button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <line x1="20" y1="60" x2="180" y2="60"></line>
+                        <line x1="20" y1="100" x2="180" y2="100"></line>
+                        <line x1="20" y1="140" x2="180" y2="140"></line>
+                    </svg>
+                    <div id="hamburger-menu-button" class="related-menu-button"></div>
+                </div>
+            </div>
+            <div class="middle-menu-panel">
+                <input type="text" id="project-name-text" class="input-text" placeholder="Project 0">
+            </div>
+            <div class="right-menu-panel">
+                <select name="" id="screen-mode-selection" class="input-selection">
+                    <option value="2D">2D</option>
+                    <option value="3D">3D</option>
+                    <option value="2D|3D">2D | 3D</option>
+                    <option value="3D|2D">3D | 2D</option>
+                </select>
+                <input type="checkbox" name="" id="color-mode-checkbox">                
+                <label for="color-mode-checkbox">
+                    <div class="light-mode-button-wrapper right-menu-panel--button-wrapper">
+                        <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                            <circle cx="100" cy="100" r="40" fill="none"></circle>
+                            <line x1="100" y1="10" x2="100" y2="40"></line>
+                            <line x1="100" y1="190" x2="100" y2="160"></line>
+                            <line x1="10" y1="100" x2="40" y2="100"></line>
+                            <line x1="190" y1="100" x2="160" y2="100"></line>
+                            <line x1="36" y1="36" x2="57.5" y2="57.5"></line>
+                            <line x1="164" y1="36" x2="142.5" y2="57.5"></line>
+                            <line x1="36" y1="164" x2="57.5" y2="142.5"></line>
+                            <line x1="164" y1="164" x2="142.5" y2="142.5"></line>
+                        </svg>  
+                        <div id="light-mode-button" class="right-menu-panel--button"></div>
+                    </div>
+                    <div class="dark-mode-button-wrapper right-menu-panel--button-wrapper">
+                        <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">                        
+                            <circle cx="125" cy="100" r="80" fill="none"></circle>
+                            <ellipse cx="160" cy="100" rx="50" ry="70" fill="rgb(240, 240, 240)"></ellipse>
+                            <ellipse cx="210" cy="100" rx="60" ry="200" fill="rgb(240, 240, 240)" stroke="none"></ellipse>
+                        </svg>
+                        <div id="dark-mode-button" class="right-menu-panel--button"></div>
+                    </div>
+                </label>
+                <div class="music-button-wrapper right-menu-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">                        
+                        <path d="M100 10 A60 60 0 0 0 160 70" fill="none" />
+                        <line x1="100" y1="10" x2="100" y2="150"></line>
+                        <circle cx="70" cy="152.5" r="30" fill="black"  />
+                    </svg>
+                    <div id="music-button" class="right-menu-panel--button related-menu-button"></div>
+                </div>
+                <div class="user-button-wrapper right-menu-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <circle cx="100" cy="100" r="80" fill="none"  />
+                        <circle cx="100" cy="80" r="30" fill="none"  />
+                        <path d="M50 160 A20 20 0 0 1 150 160" fill="none" />
+                    </svg>
+                    <div id="user-button" class="right-menu-panel--button related-menu-button"></div>
+                </div>
+                <div class="back-button-wrapper right-menu-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <line x1="20" y1="100" x2="180" y2="100"></line>
+                        <path d="M100 20 L180 100 L 100 180" fill="none" />
+                    </svg>
+                    <div id="back-button" class="right-menu-panel--button"></div>
+                </div>
+            </div>
+        </div>
+        <div class="object-adding-container work-page--container">
+            <div class="top-object-adding-panel">
+                <div class="construction-button-wrapper top-object-adding-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <path d="M20 100 L100 20 L180 100" fill="none" />
+                        <path d="M50 70 L50 180 L150 180 L150 70" fill="none" />
+                    </svg>
+                    <div id="construction-button" class="top-object-adding-panel--button related-object-adding-button"></div>
+                </div>
+                <div class="furniture-button-wrapper top-object-adding-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <path d="M20 100 L60 100 L60 140 L140 140 L140 100 L180 100 L180 180 L20 180 L20 92.5" fill="none" />
+                        <path d="M40 100 L40 20 L160 20 L160 100" fill="none" />
+                    </svg>
+                    <div id="furniture-button" class="top-object-adding-panel--button related-object-adding-button"></div>
+                </div>
+                <div class="kitchen-button-wrapper top-object-adding-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <rect x="20" y="40" width="160" height="140" fill="none" />
+                        <rect x="40" y="20" width="40" height="20" fill="none" />
+                        <rect x="120" y="20" width="40" height="20" fill="none" />
+                        <rect x="50" y="100" width="100" height="50" fill="none" />
+                    </svg>
+                    <div id="kitchen-button" class="top-object-adding-panel--button related-object-adding-button"></div>
+                </div>
+                <div class="bathroom-button-wrapper top-object-adding-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <rect x="20" y="100" width="160" height="80" fill="none" />
+                        <path d="M160 100 L160 20 L100 20 L100 50" fill="none" />
+                        <line x1="70" y1="50" x2="130" y2="50"></line>
+                    </svg>
+                    <div id="bathroom-button" class="top-object-adding-panel--button related-object-adding-button"></div>
+                </div>
+                <div class="electronic-device-button-wrapper top-object-adding-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <circle cx="100" cy="80" r="60" fill="none"></circle>
+                        <path d="M70 130 L70 180 L130 180 L130 130" fill="none" />
+                        <path d="M90 140 L80 90 L120 90 L110 140" fill="none" />
+                    </svg>
+                    <div id="electronic-device-button" class="top-object-adding-panel--button related-object-adding-button"></div>
+                </div>
+                <div class="plant-button-wrapper top-object-adding-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <ellipse cx="60" cy="50" rx="40" ry="20" fill="none"></ellipse>
+                        <ellipse cx="140" cy="60" rx="40" ry="20" fill="none"></ellipse>
+                        <path d="M100 50 A20 70 0 0 0 100 180" fill="none" />
+                    </svg>  
+                    <div id="plant-button" class="top-object-adding-panel--button related-object-adding-button"></div>
+                </div>
+                <div class="mesh-button-wrapper top-object-adding-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <rect x="100" y="20" width="80" height="80" fill="none" />
+                        <polygon points="20 100 60 20 100 100" fill="none" />
+                        <circle cx="100" cy="150" r="40" fill="none" />
+                    </svg>   
+                    <div id="mesh-button" class="top-object-adding-panel--button related-object-adding-button"></div>
+                </div>
+                <div class="insert-button-wrapper top-object-adding-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <path d="M150 70 L150 20 L20 20 L20 180 L150 180 L150 130" fill="none" />
+                        <path d="M110 60 L70 100 L110 140" fill="none" />
+                        <line x1="70" y1="100" x2="180" y2="100"></line>
+                    </svg>   
+                    <div id="insert-button" class="top-object-adding-panel--button related-object-adding-button"></div>
+                </div>
+            </div>
+            <div class="bottom-object-adding-panel">
+                <div class="bottom-logo-wrapper logo">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <rect x="20" y="20" width="160" height="160" fill="none" />
+                        <line x1="20" y1="100" x2="180" y2="100"></line>
+                        <line x1="20" y1="20" x2="100" y2="100"></line>
+                        <line x1="180" y1="20" x2="100" y2="100"></line>
+                    </svg>
+                </div>
+            </div>             
+        </div>
+        <div class="control-container work-page--container">
+            <div class="top-control-panel">
+                <div id="outline-button" class="top-control-panel--button related-control-button">Outline</div>
+                <div id="history-button" class="top-control-panel--button related-control-button">History</div>
+                <div id="screen-button" class="top-control-panel--button related-control-button">Screen</div>
+                <div class="empty-top-control-wrapper"></div>
+            </div>
+            <div class="bottom-control-panel">
+                <div class="outline-panel bottom-control-panel--panel related-control-panel">Outline Panel</div>
+                <div class="history-panel bottom-control-panel--panel related-control-panel">History Panel</div>
+                <div class="screen-panel bottom-control-panel--panel related-control-panel">Screen Panel</div>
+            </div>
+        </div>
+        <div class="edit-container work-page--container">
+            <div class="top-edit-panel">
+                <input type="text" id="select-object-text" class="input-text" placeholder="No Select">
+            </div>
+            <div class="left-edit-panel">
+                <div class="object-button-wrapper left-edit-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <rect x="50" y="50" width="100" height="100" fill="none" />
+                        <path d="M20 80 L20 20 L80 20" fill="none" />
+                        <path d="M120 20 L180 20 L180 80" fill="none" />
+                        <path d="M180 120 L180 180 L120 180" fill="none" />
+                        <path d="M80 180 L20 180 L20 120" fill="none" />
+                    </svg>   
+                    <div id="object-button" class="left-edit-panel--button related-edit-button"></div>
+                </div>
+                <div class="geometry-button-wrapper left-edit-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <path d="M20 50 L100 20 L180 50" fill="none" />
+                        <path d="M20 50 L100 80 L180 50" fill="none" />
+                        <path d="M20 150 L100 180 L180 150" fill="none" />     
+                        <line x1="25" y1="45" x2="25" y2="155"></line>
+                        <line x1="175" y1="45" x2="175" y2="155"></line>
+                        <line x1="100" y1="70" x2="100" y2="180"></line>
+                    </svg>   
+                    <div id="geometry-button" class="left-edit-panel--button related-edit-button"></div>
+                </div>
+                <div class="material-button-wrapper left-edit-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <rect x="20" y="20" width="160" height="160" fill="none" />
+                        <line x1="74" y1="20" x2="74" y2="180"></line>
+                        <line x1="126" y1="20" x2="126" y2="180"></line>
+                        <line x1="20" y1="74" x2="180" y2="74"></line>
+                        <line x1="20" y1="126" x2="180" y2="126"></line>
+                        <rect x="20" y="20" width="50" height="50" />
+                    </svg>    
+                    <div id="material-button" class="left-edit-panel--button related-edit-button"></div>
+                </div>
+                <div class="electrical-button-wrapper left-edit-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <path d="M50 60 A20 20 0 0 0 150 60" fill="none" />
+                        <line x1="43" y1="60" x2="157" y2="60"></line>
+                        <line x1="75" y1="60" x2="75" y2="20"></line>
+                        <line x1="125" y1="60" x2="125" y2="20"></line>
+                        <line x1="100" y1="110" x2="100" y2="180"></line>
+                    </svg>     
+                    <div id="electrical-button" class="left-edit-panel--button related-edit-button"></div>
+                </div>
+                <div class="magic-button-wrapper left-edit-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                        <path d="M50 180 L100 40 L150 180 L150 20" fill="none" />
+                        <line x1="20" y1="100" x2="180" y2="100"></line>
+                    </svg>   
+                    <div id="magic-button class="left-edit-panel--button related-edit-button""></div>
+                </div>
+                <div class="empty-left-edit-wrapper"></div>
+            </div>
+            <div class="right-edit-panel">
+                <div class="object-panel right-edit-panel--panel related-edit-panel">Object Panel</div>
+                <div class="geometry-panel right-edit-panel--panel related-edit-panel">Geometry Panel</div>
+                <div class="material-panel right-edit-panel--panel related-edit-panel">Material Panel</div>
+                <div class="electrical-panel right-edit-panel--panel related-edit-panel">Electrical Panel</div>
+                <div class="ai-panel right-edit-panel--panel related-edit-panel">AI Panel</div>
+            </div>
+        </div>
+        
+
+        <div id="width-resizer-viewport" class="width-resizer"></div>
+        <div id="width-resizer-control-edit" class="width-resizer"></div>
+        <div id="height-resizer-control-edit" class="height-resizer"></div>
+        <div id="width-height-resizer-control-edit" class="width-height-resizer"></div>
+    </div>
+    
+ 
+    <div class="outer-top-object-adding-panel invisible">
+        <input type="text" id="search-object-adding-text" class="input-text" placeholder="Search Object">
+        <div class="clear-object-adding-button-wrapper outer-top-object-adding-panel--button-wrapper">
+            <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                <line x1="20" y1="20" x2="180" y2="180"></line>
+                <line x1="180" y1="20" x2="20" y2="180"></line>
+            </svg>
+            <div id="clear-object-adding-button" class="outer-top-object-adding-panel--button"></div>
+        </div>
+        <div class="search-object-adding-button-wrapper outer-top-object-adding-panel--button-wrapper">
+            <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                <circle cx="75" cy="75" r="60" fill="none" />
+                <line x1="115" y1="115" x2="180" y2="180"></line>
+            </svg>
+            <div id="search-object-adding-button" class="outer-top-object-adding-panel--button"></div>
+        </div>
+        <div class="close-object-adding-button-wrapper outer-top-object-adding-panel--button-wrapper">
+            <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                <line x1="20" y1="100" x2="180" y2="100"></line>
+                <path d="M100 20 L20 100 L 100 180" fill="none" />
+            </svg>
+            <div id="close-object-adding-button" class="outer-top-object-adding-panel--button"></div>
+        </div>
+    </div>
+    <div class="outer-bottom-object-adding-panel invisible">
+
+        <div id="room-button" class="outer-bottom-object-adding-panel--button">Room</div>
+        <div id="roof-button" class="outer-bottom-object-adding-panel--button">Roof</div>
+        <div id="window-button" class="outer-bottom-object-adding-panel--button">Window</div>
+        <div id="door-button" class="outer-bottom-object-adding-panel--button">Door</div>
+        <div id="fence-button" class="outer-bottom-object-adding-panel--button">Fence</div>
+        <div id="gate-button" class="outer-bottom-object-adding-panel--button">Gate</div>
+
+        <div id="roof-0-button" class="outer-bottom-object-adding-panel--button">Roof0</div>
+        <div id="window-0-button" class="outer-bottom-object-adding-panel--button">Window0</div>
+        <div id="door-0-button" class="outer-bottom-object-adding-panel--button">Door0</div>
+        <div id="fence-0-button" class="outer-bottom-object-adding-panel--button">Fence0</div>
+        <div id="gate-0-button" class="outer-bottom-object-adding-panel--button">Gate0</div>
+
+        <div id="chair-button" class="outer-bottom-object-adding-panel--button">Chair</div>
+        <div id="table-button" class="outer-bottom-object-adding-panel--button">Table</div>
+        <div id="sofa-button" class="outer-bottom-object-adding-panel--button">Sofa</div>
+        <div id="bed-button" class="outer-bottom-object-adding-panel--button">Bed</div>
+        <div id="storage-button" class="outer-bottom-object-adding-panel--button">Storage</div>
+        
+        <div id="chair-0-button" class="outer-bottom-object-adding-panel--button">Chair0</div>
+        <div id="table-0-button" class="outer-bottom-object-adding-panel--button">Table0</div>
+        <div id="sofa-0-button" class="outer-bottom-object-adding-panel--button">Sofa0</div>
+        <div id="bed-0-button" class="outer-bottom-object-adding-panel--button">Bed0</div>
+        <div id="storage-0-button" class="outer-bottom-object-adding-panel--button">Storage0</div>
+
+        <div id="stove-button" class="outer-bottom-object-adding-panel--button">Stove</div>
+
+        <div id="stove-0-button" class="outer-bottom-object-adding-panel--button">Stove0</div>
+
+        <div id="sink-button" class="outer-bottom-object-adding-panel--button">Sink0</div>
+        <div id="shower-button" class="outer-bottom-object-adding-panel--button">Shower0</div>
+        <div id="bathtub-button" class="outer-bottom-object-adding-panel--button">Bathtub0</div>
+        <div id="toilet-button" class="outer-bottom-object-adding-panel--button">Toilet0</div>
+
+        <div id="sink-0-button" class="outer-bottom-object-adding-panel--button">Sink</div>
+        <div id="shower-0-button" class="outer-bottom-object-adding-panel--button">Shower</div>
+        <div id="bathtub-0-button" class="outer-bottom-object-adding-panel--button">Bathtub</div>
+        <div id="toilet-0-button" class="outer-bottom-object-adding-panel--button">Toilet</div>
+
+        <div id="switch-button" class="outer-bottom-object-adding-panel--button">Switch</div>
+        <div id="socket-button" class="outer-bottom-object-adding-panel--button">Socket</div>
+        <div id="lamp-button" class="outer-bottom-object-adding-panel--button">Lamp</div>
+        <div id="television-button" class="outer-bottom-object-adding-panel--button">Television</div>
+        <div id="air-conditioner-button" class="outer-bottom-object-adding-panel--button">Air Conditioner</div>
+        <div id="refrigerator-button" class="outer-bottom-object-adding-panel--button">Refrigerator</div>
+
+        <div id="switch-0-button" class="outer-bottom-object-adding-panel--button">Switch0</div>
+        <div id="socket-0-button" class="outer-bottom-object-adding-panel--button">Socket0</div>
+        <div id="lamp-0-button" class="outer-bottom-object-adding-panel--button">Lamp0</div>
+        <div id="television-0-button" class="outer-bottom-object-adding-panel--button">Television0</div>
+        <div id="air-conditioner-0-button" class="outer-bottom-object-adding-panel--button">Air Conditioner0</div>
+        <div id="refrigerator-0-button" class="outer-bottom-object-adding-panel--button">Refrigerator0</div>
+
+        <div id="tree-button" class="outer-bottom-object-adding-panel--button">Tree</div>
+        <div id="flower-button" class="outer-bottom-object-adding-panel--button">Flower</div>
+        <div id="fern-button" class="outer-bottom-object-adding-panel--button">Fern</div>
+
+        <div id="tree-0-button" class="outer-bottom-object-adding-panel--button">Tree0</div>
+        <div id="flower-0-button" class="outer-bottom-object-adding-panel--button">Flower0</div>
+        <div id="fern-0-button" class="outer-bottom-object-adding-panel--button">Fern0</div>
+
+        <div id="cube-button" class="outer-bottom-object-adding-panel--button">Cube</div>
+        <div id="sphere-button" class="outer-bottom-object-adding-panel--button">Sphere</div>
+        <div id="capsule-button" class="outer-bottom-object-adding-panel--button">Capsule</div>
+        <div id="cylinder-button" class="outer-bottom-object-adding-panel--button">Cylinder</div>
+        <div id="cone-button" class="outer-bottom-object-adding-panel--button">Cone</div>
+
+        <div id="picture-button" class="outer-bottom-object-adding-panel--button">Picture</div>
+        <div id="object-3d-button" class="outer-bottom-object-adding-panel--button">Object 3D</div>
+
+    </div>    
+
+
+    <div class="file-panel outer-menu-panel related-outer-menu-panel invisible">
+        <div id="new-button" class="outer-menu-panel--button related-outer-menu-button">New</div>
+        <div id="open-button" class="outer-menu-panel--button related-outer-menu-button">Open</div>
+        <div id="save-button" class="outer-menu-panel--button related-outer-menu-button">Save</div>
+        <div id="download-button" class="outer-menu-panel--button related-outer-menu-button">Download</div>
+        <div id="print-button" class="outer-menu-panel--button related-outer-menu-button">Print</div>
+    </div>
+    <div class="edit-panel outer-menu-panel related-outer-menu-panel invisible">
+        <div id="undo-button" class="outer-menu-panel--button related-outer-menu-button">Undo</div>
+        <div id="redo-button" class="outer-menu-panel--button related-outer-menu-button">Redo</div>
+        <div id="clear-button" class="outer-menu-panel--button related-outer-menu-button">Clear</div>
+    </div>
+    <div class="view-panel outer-menu-panel related-outer-menu-panel invisible">
+        <div id="zoom-in-button" class="outer-menu-panel--button related-outer-menu-button">Zoom In</div>
+        <div id="zoom-out-button" class="outer-menu-panel--button related-outer-menu-button">Zoom Out</div>
+        <div id="full-screen-button" class="outer-menu-panel--button related-outer-menu-button">Full Screen</div>
+        <div id="reset-button" class="outer-menu-panel--button related-outer-menu-button">Reset</div>
+    </div>
+    <div class="play-panel outer-menu-panel related-outer-menu-panel invisible">
+        <div id="play-2d-button" class="outer-menu-panel--button related-outer-menu-button">2D</div>
+        <div id="play-3d-button" class="outer-menu-panel--button related-outer-menu-button">3D</div>
+    </div>
+    <div class="help-panel outer-menu-panel related-outer-menu-panel invisible">
+        <div id="tutorial-button" class="outer-menu-panel--button related-outer-menu-button">Tutorial</div>
+        <div id="about-us-button" class="outer-menu-panel--button related-outer-menu-button">About Us</div>
+    </div>
+    <div class="hamburger-menu-panel outer-menu-panel related-outer-menu-panel invisible">
+        <div id="outer-hamburger-file-button" class="outer-menu-panel--button related-outer-menu-button">File</div>
+        <div id="outer-hamburger-edit-button" class="outer-menu-panel--button related-outer-menu-button">Edit</div>
+        <div id="outer-hamburger-view-button" class="outer-menu-panel--button related-outer-menu-button">View</div>
+        <div id="outer-hamburger-play-button" class="outer-menu-panel--button related-outer-menu-button">Play</div>
+        <div id="outer-hamburger-help-button" class="outer-menu-panel--button related-outer-menu-button">Help</div>
+    </div>
+
+    <div class="music-panel outer-menu-panel related-outer-menu-panel invisible">
+        <div class="music-picture-panel unclick-outer-menu"></div>
+        <select name="" id="music-selection" class="input-selection unclick-outer-menu">
+            <option value="music-0">Music 0</option>
+        </select>
+        <div class="music-button-panel unclick-outer-menu">
+            <div class="prev-music-button-wrapper music-button-panel--button-wrapper">
+                <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="white" stroke-width="15">
+                    <polygon points="150 50 150 150 70 100" fill="none" />
+                    <line x1="50" y1="40" x2="50" y2="160"></line>
+                </svg>  
+                <div id="prev-music-button" class="music-button-panel--button related-outer-menu-button"></div>
+            </div>
+            <!-- <input type="checkbox" name="" id="play-music-checkbox"> -->
+            <!-- <label for="play-music-checkbox"> -->
+                <div class="play-music-button-wrapper music-button-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="white" stroke-width="15">
+                        <polygon points="60 50 60 150 140 100" fill="none" />
+                    </svg>
+                    <div id="play-music-button" class="music-button-panel--button related-outer-menu-button"></div>
+                </div>
+                <!-- <div class="pause-music-button-wrapper music-button-panel--button-wrapper">
+                    <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="white" stroke-width="15">
+                        <rect x="50" y="50" width="30" height="100" fill="none" />
+                        <rect x="120" y="50" width="30" height="100" fill="none" />
+                    </svg> 
+                    <div id="pause-music-button" class="music-button-panel--button related-outer-menu-button"></div>
+                </div> -->
+            <!-- </label> -->
+            <div class="next-music-button-wrapper music-button-panel--button-wrapper">
+                <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="white" stroke-width="15">
+                    <polygon points="50 50 50 150 130 100" fill="none" />
+                    <line x1="150" y1="40" x2="150" y2="160"></line>
+                </svg>  
+                <div id="next-music-button" class="music-button-panel--button related-outer-menu-button"></div>
+            </div>
+        </div>
+        <input type="range" name="" id="music-volume-range" class="unclick-outer-menu">
+        <div class="pop-out-music-button-wrapper music-button-panel--button-wrapper">
+            <svg width="20px" height="20px" viewBox="0 0 200 200" stroke="black" stroke-width="15">
+                <rect x="50" y="20" width="130" height="130" fill="none" />
+                <path d="M20 100 L20 180 L100 180" fill="none" />
+                <line x1="20" y1="180" x2="120" y2="80"></line>
+            </svg>
+            <div id="pop-out-music-button" class="music-button-panel--button related-outer-menu-button"></div>
+        </div>
+    </div>
+    <div class="user-panel outer-menu-panel related-outer-menu-panel invisible">
+        <div class="profile-picture-panel unclick-outer-menu"></div>
+        <div class="user-name-panel unclick-outer-menu">Anonymous</div>
+        <div id="edit-profile-button" class="related-outer-menu-button">Edit Profile</div>
+    </div>
+
+
+    <!-- <script src="./load.js"></script> -->
+
+    <!-- <script src="./svg.js"></script> -->
+
+    <!-- <script src="./web.js"></script>     -->
+    <!-- <script src="./trigger.js"></script> -->
+</body>
+</html>
